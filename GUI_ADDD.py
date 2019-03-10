@@ -1,0 +1,223 @@
+from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtWidgets import *
+from PyQt5.QtGui import QIcon
+from PyQt5.QtCore import *
+import sys
+import cv2
+import Help
+class Ui_MainWindow(object):
+    def setupUi(self, MainWindow):
+        MainWindow.setObjectName("MainWindow")
+        MainWindow.resize(800, 600)
+        MainWindow.setWindowOpacity(1.0)
+        self.centralwidget = QtWidgets.QWidget(MainWindow)
+        self.centralwidget.setObjectName("centralwidget")
+        self.frame = QtWidgets.QFrame(self.centralwidget)
+        self.frame.setGeometry(QtCore.QRect(0, -20, 861, 641))
+        self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame.setObjectName("frame")
+        self.toolButton = QtWidgets.QToolButton(self.frame)
+        self.toolButton.setGeometry(QtCore.QRect(460, 280, 111, 71))
+        self.toolButton.setCursor(QtGui.QCursor(QtCore.Qt.OpenHandCursor))
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(":/Images/Upload_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.toolButton.setIcon(icon)
+        self.toolButton.setIconSize(QtCore.QSize(40, 40))
+        self.toolButton.setObjectName("toolButton")
+        self.label = QtWidgets.QLabel(self.frame)
+        self.label.setGeometry(QtCore.QRect(580, 270, 121, 61))
+        font = QtGui.QFont()
+        font.setFamily("Monospace")
+        font.setPointSize(20)
+        font.setBold(True)
+        font.setItalic(True)
+        font.setWeight(75)
+        self.label.setFont(font)
+        self.label.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.label.setObjectName("label")
+        self.label_2 = QtWidgets.QLabel(self.frame)
+        self.label_2.setGeometry(QtCore.QRect(450, 20, 281, 251))
+        self.label_2.setCursor(QtGui.QCursor(QtCore.Qt.ArrowCursor))
+        self.label_2.setText("")
+        self.label_2.setPixmap(QtGui.QPixmap(":/Images/Safety.jpeg"))
+        self.label_2.setObjectName("label_2")
+        self.listWidget = QtWidgets.QListWidget(self.frame)
+        self.listWidget.setGeometry(QtCore.QRect(10, 180, 351, 381))
+        self.listWidget.setMinimumSize(QtCore.QSize(341, 0))
+        self.listWidget.viewport().setProperty("cursor", QtGui.QCursor(QtCore.Qt.ForbiddenCursor))
+        self.listWidget.setObjectName("listWidget")
+        item = QtWidgets.QListWidgetItem()
+        font = QtGui.QFont()
+        font.setFamily("Serif")
+        font.setPointSize(14)
+        font.setItalic(True)
+        item.setFont(font)
+        brush = QtGui.QBrush(QtGui.QColor(65, 132, 98))
+        brush.setStyle(QtCore.Qt.Dense7Pattern)
+        item.setBackground(brush)
+        self.listWidget.addItem(item)
+        self.listWidget_2 = QtWidgets.QListWidget(self.frame)
+        self.listWidget_2.setGeometry(QtCore.QRect(10, 50, 341, 111))
+        self.listWidget_2.viewport().setProperty("cursor", QtGui.QCursor(QtCore.Qt.ForbiddenCursor))
+        self.listWidget_2.setObjectName("listWidget_2")
+        item = QtWidgets.QListWidgetItem()
+        font = QtGui.QFont()
+        font.setFamily("Century Schoolbook L")
+        font.setPointSize(72)
+        font.setBold(True)
+        font.setItalic(True)
+        font.setUnderline(False)
+        font.setWeight(75)
+        item.setFont(font)
+        brush = QtGui.QBrush(QtGui.QColor(30, 13, 158))
+        brush.setStyle(QtCore.Qt.BDiagPattern)
+        item.setBackground(brush)
+        self.listWidget_2.addItem(item)
+        self.progressBar = QtWidgets.QProgressBar(self.frame)
+        self.progressBar.setGeometry(QtCore.QRect(520, 480, 221, 41))
+        self.progressBar.setProperty("value", 0)
+        self.progressBar.setObjectName("progressBar")
+        self.label_3 = QtWidgets.QLabel(self.frame)
+        self.label_3.setGeometry(QtCore.QRect(630, 310, 101, 51))
+        font = QtGui.QFont()
+        font.setFamily("Monospace")
+        font.setPointSize(20)
+        font.setBold(True)
+        font.setItalic(True)
+        font.setWeight(75)
+        self.label_3.setFont(font)
+        self.label_3.setObjectName("label_3")
+        self.widget = QtWidgets.QWidget(self.frame)
+        self.widget.setGeometry(QtCore.QRect(420, 390, 321, 48))
+        self.widget.setObjectName("widget")
+        self.horizontalLayout = QtWidgets.QHBoxLayout(self.widget)
+        self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout.setObjectName("horizontalLayout")
+        self.pushButton = QtWidgets.QPushButton(self.widget)
+        font = QtGui.QFont()
+        font.setFamily("URW Chancery L")
+        font.setPointSize(20)
+        font.setBold(True)
+        font.setItalic(True)
+        font.setWeight(75)
+        self.pushButton.setFont(font)
+        self.pushButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.pushButton.setObjectName("pushButton")
+        self.horizontalLayout.addWidget(self.pushButton)
+        self.lineEdit = QtWidgets.QLineEdit(self.widget)
+        font = QtGui.QFont()
+        font.setFamily("Purisa")
+        font.setPointSize(16)
+        font.setBold(True)
+        font.setItalic(True)
+        font.setWeight(75)
+        self.lineEdit.setFont(font)
+        self.lineEdit.setCursor(QtGui.QCursor(QtCore.Qt.ForbiddenCursor))
+        self.lineEdit.setStatusTip("")
+        self.lineEdit.setInputMask("")
+        self.lineEdit.setObjectName("lineEdit")
+        self.horizontalLayout.addWidget(self.lineEdit)
+        MainWindow.setCentralWidget(self.centralwidget)
+        self.menubar = QtWidgets.QMenuBar(MainWindow)
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 25))
+        self.menubar.setObjectName("menubar")
+        self.menuMenu = QtWidgets.QMenu(self.menubar)
+        self.menuMenu.setObjectName("menuMenu")
+        self.menuHelp = QtWidgets.QMenu(self.menubar)
+        self.menuHelp.setObjectName("menuHelp")
+        MainWindow.setMenuBar(self.menubar)
+        self.statusbar = QtWidgets.QStatusBar(MainWindow)
+        self.statusbar.setObjectName("statusbar")
+        MainWindow.setStatusBar(self.statusbar)
+        self.actionQuit = QtWidgets.QAction(MainWindow)
+        self.actionQuit.setObjectName("actionQuit")
+        self.actionAbout = QtWidgets.QAction(MainWindow)
+        self.actionAbout.setObjectName("actionAbout")
+        self.menuMenu.addAction(self.actionQuit)
+        self.menuHelp.addAction(self.actionAbout)
+        self.menubar.addAction(self.menuMenu.menuAction())
+        self.menubar.addAction(self.menuHelp.menuAction())
+
+        self.actionQuit.triggered.connect(self.quit)
+        self.toolButton.clicked.connect(self.upload)
+        self.actionAbout.triggered.connect(self.help)
+        self.pushButton.clicked.connect(self.status)
+
+        self.retranslateUi(MainWindow)
+        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+    def retranslateUi(self, MainWindow):
+        _translate = QtCore.QCoreApplication.translate
+        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        self.toolButton.setText(_translate("MainWindow", "..."))
+        self.label.setText(_translate("MainWindow", "Upload"))
+        __sortingEnabled = self.listWidget.isSortingEnabled()
+        self.listWidget.setSortingEnabled(False)
+        item = self.listWidget.item(0)
+        item.setText(_translate("MainWindow", "India is the No.1 contributor \nto global road crash mortality and\nmorbidity figures. \n\nEvery hour, around 16 lives are\nlost to road crashes in India. In the\nlast decade alone, India lost 1.3\nmillion people to road crashes and\nanother 5.3 million were disabled\nfor life, and yet, drivers fail to give\nup risky habits.\n\nHence, this led to our idea of\nmaking this revolutionary product\nto prevent such risk.\n"))
+        self.listWidget.setSortingEnabled(__sortingEnabled)
+        __sortingEnabled = self.listWidget_2.isSortingEnabled()
+        self.listWidget_2.setSortingEnabled(False)
+        item = self.listWidget_2.item(0)
+        item.setText(_translate("MainWindow", " INFO"))
+        self.listWidget_2.setSortingEnabled(__sortingEnabled)
+        self.label_3.setText(_translate("MainWindow", "Image"))
+        self.pushButton.setText(_translate("MainWindow", "Status"))
+        self.lineEdit.setText(_translate("MainWindow", "Select Input"))
+        self.menuMenu.setTitle(_translate("MainWindow", "Menu"))
+        self.menuHelp.setTitle(_translate("MainWindow", "Help"))
+        self.actionQuit.setText(_translate("MainWindow", "Quit"))
+        self.actionQuit.setShortcut(_translate("MainWindow", "Esc"))
+        self.actionAbout.setText(_translate("MainWindow", "About"))
+        self.actionAbout.setShortcut(_translate("MainWindow", "F2"))
+
+    def prog(self):
+        self.completed=0
+        while self.completed<100:
+            self.completed+=0.0001
+            self.progressBar.setValue(self.completed)
+
+
+    def upload(self):
+        options = QFileDialog.Options()
+        options |= QFileDialog.DontUseNativeDialog
+        name, _ = QFileDialog.getOpenFileName(None,"QFileDialog.getOpenFileName()", "","All Files (*);;Python Files (*.py)", options=options)
+        if str(name)=="":
+            self.change_text("No Input!!!")
+        else:
+            img=cv2.imread(str(name))
+            k="Processing..."
+            self.change_text(k)
+            self.prog()
+            cv2.imshow("Image",img)
+            k="No Output!!!"
+            self.change_text(k)
+            cv2.waitKey(0)
+            cv2.destroyAllWindows()
+
+    def change_text(self,k):
+        self.lineEdit.setText(k)
+
+    def help(self):
+        import os
+        os.system('python2 Help.py')
+            
+
+    def status(self):
+        k="No Output!!!"
+        self.lineEdit.setText(k)
+
+    def quit(self):
+        sys.exit()
+
+import icons
+
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    MainWindow = QtWidgets.QMainWindow()
+    ui = Ui_MainWindow()
+    ui.setupUi(MainWindow)
+    MainWindow.show()
+    sys.exit(app.exec_())

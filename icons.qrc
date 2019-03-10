@@ -1,0 +1,9 @@
+<RCC>
+  <qresource prefix="Images">
+    <file>Safety.jpeg</file>
+    <file>Safety1.jpeg</file>
+    <file>Safety2.png</file>
+    <file>Upload_icon.png</file>
+    <file>Images/Background.jpg</file>
+  </qresource>
+</RCC>
