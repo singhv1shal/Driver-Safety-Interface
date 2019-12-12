@@ -39,6 +39,13 @@ Datset is collected from StateFarm's Distracted Driver Detection competition on 
 Our model is trained on images obtained from a Kaggle Competition sponsored by State Farm Insurance which has 10 distinct classes. Each input image is resized to 224 pixels by 224 pixels , Image processing techniques such as histogram equalization across all 3 channels and randomly rotating images have been done which also serves in data augmentation . We have used transfer learning due to limited dataset and resources, where we have utilized pre-trained VGG-16 net CNN model (over VGG-19,GoogLeNet ,ResNet-50,it produced the best results) and then further trained to learn the idiosyncrasies of our data. We performed Global Average Pooling just before the final output layer at the end .This helps the convolutional neural network to have localization ability despite being trained on images. The accuracy of model for a subset of test data was found to be between 50-60% as model find it difficult to differentiate between the 
 safe driving ,talking to passengers ,and hair and make-up class. The model is trained on Google Colab which uses Tesla K80 GPU.
 
+### Running pretrained model:
+
+One model is trained using implementational details as mentioned above. This model can be found in Models folder.
+The images can be predicted for the different classes using command:
+
+predict.py --image path-to-image
+
 ### Running Model on your dataset 
 
 There are three steps to run the model: 
@@ -47,7 +54,7 @@ There are three steps to run the model:
 
 • In order to train the model on your dataset use train.py and specify the file paths at respective positions. 
 
-• Use predict.py to know the 5 most accurate class , the trained model can be found in model folder.
+• Update predict.py for the newly trained model and use predict.py to know the 5 most accurate class , the trained model can be found in model folder.
 
 Run the GUI by command : python GUI_ADDD.py and click browse button to output an image . The integration part of UI with model is yet to be completed.
 
