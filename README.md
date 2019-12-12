@@ -8,6 +8,8 @@ India is the no.1 contributor to global road crash mortality and morbidity figur
 
 • Our in-vehicle device can help anyone with a personal and/or financial interests in improving driving safety of friend, family, employees etc. If we prepare database of co-ordinates and time of distraction it may help at Individuals Level : The in-car device combined with web-based analytics can give you accurate feedback on your loved one’s driving safety. Business Level : Many businesses own one or more company vehicles. These vehicles are driven by employees but are company liability. This device and web analytics can give you the peace of mind that your assets are in good hands and being driven responsibly. If you discover distracted driving, you can review the photo evidence and intervene as needed. 
 
+Note: This project develops the software component which can be extended to the deployment on hardware.
+
 ### Technology
 
 • Python 
